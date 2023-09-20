@@ -1,10 +1,7 @@
 package ru.ivana.zavad.springboot.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -20,9 +17,9 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Min(value = 0, message = "Age should be greater than 0")
+    @Min(value = 1, message = "Enter number greater than 0")
     @Column(name = "age")
-    private Integer age;
+    private String age;
 
     @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email should be valid")
@@ -33,7 +30,7 @@ public class User {
 
     }
 
-    public User(String name, Integer age, String email) {
+    public User(String name, String age, String email) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -56,11 +53,11 @@ public class User {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
